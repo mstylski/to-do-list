@@ -1,0 +1,8 @@
+.done {
+  width: 12px;
+}
+
+.items {
+  list-style: none;
+  display: unset;
+}

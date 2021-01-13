@@ -1,0 +1,11 @@
+<app-todo-add
+  (saved)="saveTodo($event)"
+  [todoToEdit]="todoInEdit">
+</app-todo-add>
+<app-todo-item
+  *ngFor="let todo of todos"
+  [todo]="todo"
+  (deleted)="deleteTodo($event)"
+  (edited)="editTodo($event)">
+</app-todo-item>
+
