@@ -1,3 +1,5 @@
-To-Do List
-<button (click)="saveTodo()">{{ todoToEdit ? 'Update' : 'Save' }}</button>
-  <input [formControl]="titleControl">
+<div class="add-todo-container">
+  <input [formControl]="titleControl" class="add" placeholder="task...">
+  <button [disabled]="titleControl.invalid" (click)="saveTodo()">{{ todoToEdit ? 'Update' : 'Save' }}</button>
+</div>
+

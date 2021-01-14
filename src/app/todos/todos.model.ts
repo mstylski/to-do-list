@@ -1,18 +1,14 @@
-export interface HttpTodosResponse {
+export interface HttpGetTodosResponse {
   status: HttpResponseStatus;
   data: Todo[];
 }
 
-export interface HttpTodoPayload {
+export interface HttpSaveTodoResponse {
   status: HttpResponseStatus;
-  data: {
-      id: string,
-      task: string,
-      is_completed: boolean;
-    };
+  data: [Todo];
 }
 
-export interface DeleteTodo {
+export interface HttpDeleteTodoResponse {
   status: HttpResponseStatus;
   data: {
     id: string
@@ -21,10 +17,9 @@ export interface DeleteTodo {
 
 export interface Todo {
   id: string;
-  candidate: string;
+  candidate?: string;
   task: string;
-  is_completed: 0;
+  is_completed: 1 | 0;
 }
 
 type HttpResponseStatus = 'success' | 'error';
-

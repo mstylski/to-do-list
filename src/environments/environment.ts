@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'https://angular.massivepixel.io/api/surname.name'
+  apiUrl: 'https://angular.massivepixel.io/api/stylski.michal'
 };
 
 /*

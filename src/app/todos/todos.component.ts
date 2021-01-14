@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {TodosService} from '../todos.service';
-import {Todo} from '../todos.model';
+import {TodosService} from './todos.service';
+import {Todo} from './todos.model';
 
 @Component({
   selector: 'app-todos',
@@ -10,6 +10,9 @@ import {Todo} from '../todos.model';
 export class TodosComponent implements OnInit {
   todos: Todo[] = [];
   todoInEdit: null | Todo;
+  hasError = false;
+  isTodoFormVisible = false;
+  onlyDoneTodosVisible = false;
 
   constructor(private todosService: TodosService) {
   }
@@ -18,10 +21,13 @@ export class TodosComponent implements OnInit {
     this.getTodos();
   }
 
-  private getTodos(): void {
-    this.todosService.getTodos().subscribe(response => this.todos = response.data);
+  toggleAddTodoFormVisibility(): void {
+    this.isTodoFormVisible = !this.isTodoFormVisible;
   }
 
+  toggleDoneTodosVisibility(): void {
+    this.onlyDoneTodosVisible = !this.onlyDoneTodosVisible;
+  }
   saveTodo(todo: Todo): void {
     const formData = new FormData();
     formData.append('id', todo.id);
@@ -41,5 +47,15 @@ export class TodosComponent implements OnInit {
 
   editTodo(todo: Todo): void {
     this.todoInEdit = todo;
+  }
+
+  private getTodos(): void {
+    this.todosService.getTodos().subscribe((response) => {
+      this.todos = response.data;
+      this.hasError = false;
+    }, () => {
+      this.todos = [];
+      this.hasError = true;
+    });
   }
 }
