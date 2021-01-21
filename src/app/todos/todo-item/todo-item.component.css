@@ -1,0 +1,39 @@
+.done {
+  width: 12px;
+}
+
+.items {
+  list-style: none;
+  display: unset;
+}
+
+.is_completed {
+  text-decoration: line-through;
+}
+
+.task {
+  border-bottom: 1px solid #a7a6a6;
+  border-top: 1px solid #A7A6A6;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  height: 100%;
+}
+
+.fa-trash {
+  margin-left: 6px;
+}
+
+input {
+  margin-right: 10px;
+}
+
+.icons,
+.task-body {
+  display: flex;
+  align-items: center;
+}
+
+.fas {
+  cursor: pointer;
+}

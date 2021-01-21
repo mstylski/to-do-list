@@ -1,0 +1,22 @@
+<div class="todos-container">
+  <div class="header">
+    <i class="fas fa-plus" (click)="toggleAddTodoFormVisibility()"></i>
+    <h3>ToDo List</h3>
+    <i class="fas fa-cog" (click)="toggleDoneTodosVisibility()"></i>
+  </div>
+  <app-todo-add
+    *ngIf="isTodoFormVisible"
+    (saved)="saveTodo($event)"
+    [todoToEdit]="todoInEdit">
+  </app-todo-add>
+  <app-todo-item
+    *ngFor="let todo of todos"
+    [hidden]="onlyDoneTodosVisible && todo.is_completed === 0"
+    [todo]="todo"
+    (deleted)="deleteTodo($event)"
+    (edited)="editTodo($event)"
+    (doneToggled)="saveTodo($event)">
+  </app-todo-item>
+  <p *ngIf="hasError" class="error"> NO RESULTS</p>
+</div>
+

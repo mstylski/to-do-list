@@ -1,0 +1,10 @@
+<div class="task">
+  <div class="task-body">
+    <input type="checkbox" [checked]="todo.is_completed" (change)="toggleDone($event.target.checked)">
+    <span [ngClass]="{'is_completed': todo.is_completed}">{{ todo.task }}</span>
+  </div>
+  <div class="icons">
+      <i class="fas fa-edit" (click)="editTodo()"></i>
+      <i class="fas fa-trash" (click)="deleteTodo()"></i>
+  </div>
+</div>
